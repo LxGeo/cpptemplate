@@ -1,6 +1,6 @@
 FROM debian:stable-slim
 
-LABEL maintainer="ben.mahr@gmail.com" \
+LABEL maintainer="cherif.abedrazek@gmail.com" \
       description="Image which consists of C++ related build tools." \
       version="1.0"
 
