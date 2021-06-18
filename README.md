@@ -1,22 +1,27 @@
-# cpptemplate {#mainpage}
-> A C++ GitHub template project.
+# Repo name
+> Repo description.
 
 [![CircleCI][circleci-badge]][circleci-url]
 [![CodeFactor Grade][codefactor-badge]][codefactor-url]
 [![Documentation][documentation-badge]][documentation-url]
 [![License][license-badge]][license-url]
 
-A C++ GitHub template project consisting of a circleci build pipeline utilising cmake, ctest, vcpkg, and an automated documentation deployment via GitHub-Actions at gh-pages branch.
-
 ![](images/header.png)
 
 ## Getting Started
 
-To build the project:
-- Setup toolchain `~/PROJECTNAME/build/cmake .. -DCMAKE_TOOLCHAIN_FILE={YOUR_PATH_TO_VCPKG}/scripts/buildsystems/vcpkg.cmake`
+To build the project for windows:
+- Install qgis from [osgeo4w][osgeo4w-url]
+- Install vcpkg to help install remaining dependencies [vcpkg][vcpkg-url]
+- Set following environment variables in powershell script file (set_env.ps1):
+	- LX_GEO_REPO_ROOT
+	- OSGEO4W_ROOT
+	- VS17COMNTOOLS ( probably "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools" )
+	- VCPKG_ROOT
+- Install dependencies by running `path\to\vcpkg.exe --triplet x64-windows install "@.vcpkg_deps.txt"`
+- Run cmake command in build folder `cmake .. "-DCMAKE_TOOLCHAIN_FILE=path\to\vcpkg\scripts\buildsystems\vcpkg.cmake" -G "Visual Studio 16 2019"`
 - Build `~/PROJECTNAME/build/cmake --build . --config Release`
-- Execute the tests `~/PROJECTNAME/build/ctest`
-- You can execute the program by `./build/app/PROJECTNAME`
+- Execute the tests `./out/build/ctest`
 
 To update the docker image:
 - Edit the Dockerfile to your needs
@@ -35,8 +40,6 @@ To change/add dependencies:
 ### Prerequisites/Dependencies
 
 - [cmake][cmake-url] – Open-Source, cross-platform build tool
-- [fmt][fmt-url] – External library used for formatting and printing results
-- [doctest][doctest-url] – Feature-rich C++11/14/17/20 single-header testing framework for unit tests and TDD
 - [vcpkg][vcpkg-url] – C++ Library Manager for Windows, Linux, and MacOS
 - [python 3][python-url] – A programming language used to convert ctest results with a xml transformation (xslt)
 
@@ -44,18 +47,6 @@ To change/add dependencies:
 
 * [1.0.0][v1.0.0]
     * ADD: GitHub project template
-
-## Meta
-
-Documentation can be found at https://ben1980.github.io/cpptemplate/
-
-**Benjamin Mahr** – [GitHub][rep-url]  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– [LinkedIn][linkedin-url]  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– [Twitter][twitter-url]  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– [Mail][mail]
-
-Distributed under the MIT license. See ``LICENSE`` for more information.
-
 
 ## Acknowledgments
 
@@ -65,21 +56,18 @@ Distributed under the MIT license. See ``LICENSE`` for more information.
 - gh-pages GitHub-Action – https://github.com/peaceiris/actions-gh-pages
 - Dockerfile Tips – https://blog.container-solutions.com/6-dockerfile-tips-official-images
 
-[circleci-url]: https://circleci.com/gh/Ben1980/cpptemplate
-[codefactor-url]: https://www.codefactor.io/repository/github/ben1980/cpptemplate
-[documentation-url]: https://ben1980.github.io/cpptemplate/
-[license-url]: https://github.com/Ben1980/cpptemplate/blob/master/LICENSE
-[circleci-badge]: https://img.shields.io/circleci/build/gh/Ben1980/cpptemplate
-[codefactor-badge]: https://img.shields.io/codefactor/grade/github/ben1980/cpptemplate
-[documentation-badge]: https://img.shields.io/github/workflow/status/Ben1980/cpptemplate/Documentation?label=Documentation
-[license-badge]: https://img.shields.io/github/license/Ben1980/cpptemplate
+[circleci-url]: https://circleci.com/
+[codefactor-url]: https://www.codefactor.io/
+[documentation-url]: https://LxGeo.github.io/cpptemplate/
+[license-url]: https://github.com/LxGeo/cpptemplate/blob/master/LICENSE
+[circleci-badge]: https://img.shields.io/circleci/build/gh/LxGeo/cpptemplate
+[codefactor-badge]: https://img.shields.io/codefactor/grade/github/LxGeo/cpptemplate
+[documentation-badge]: https://img.shields.io/github/workflow/status/LxGeo/cpptemplate/Documentation?label=Documentation
+[license-badge]: https://img.shields.io/github/license/LxGeo/cpptemplate
 [cmake-url]: https://cmake.org/
 [fmt-url]: https://fmt.dev/latest/index.html
 [doctest-url]: https://github.com/onqtam/doctest
-[rep-url]: https://github.com/Ben1980
-[linkedin-url]: https://www.linkedin.com/in/benjamin-mahr-728a1639/
-[twitter-url]: https://twitter.com/BenMahr
-[mail]: ben.amhr@gmail.com
+[rep-url]: https://github.com/LxGeo
 [vcpkg-url]: https://github.com/microsoft/vcpkg
 [python-url]: https://www.python.org/
 
